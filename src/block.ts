@@ -1,6 +1,8 @@
+import { GENESIS_DATA } from './config';
+
 export interface Block {
   timestamp: string;
-  data: string;
+  data: string[];
   hash: string;
   lastHash: string;
 }
@@ -12,13 +14,9 @@ export class Block {
     this.hash = hash;
     this.lastHash = lastHash;
   }
+  static genesis() {
+    return new Block(GENESIS_DATA);
+  }
 }
 
-console.log(
-  new Block({
-    timestamp: '01/01/01',
-    data: 'one',
-    hash: 'fo-hash',
-    lastHash: 'last-fo-hash',
-  })
-);
+console.log(Block.genesis());
