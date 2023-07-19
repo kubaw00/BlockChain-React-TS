@@ -1,11 +1,11 @@
-interface Block {
+export interface Block {
   timestamp: string;
   data: string;
   hash: string;
   lastHash: string;
 }
 
-class Block {
+export class Block {
   constructor({ timestamp, data, hash, lastHash }: Block) {
     this.timestamp = timestamp;
     this.data = data;
