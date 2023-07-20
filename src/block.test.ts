@@ -24,4 +24,23 @@ describe('Block', () => {
       expect(Block.genesis()).toEqual(GENESIS_DATA);
     });
   });
+
+  describe('mine()', () => {
+    const lastBlock = Block.genesis();
+    const data = ['piece of data'];
+    const lastHash = lastBlock.hash;
+    const mineBlock = Block.mine(data, lastBlock);
+    test('lastHash of mineBlock equals hash genesis', () => {
+      expect(mineBlock.lastHash).toEqual(lastHash);
+    });
+    test('mineBlock is instanceof genesisBlock', () => {
+      expect(mineBlock instanceof Block);
+    });
+    test('data equals mineBlock.data', () => {
+      expect(data).toEqual(mineBlock.data);
+    });
+    test('timestamp is not undefined', () => {
+      expect(mineBlock.timestamp).not.toBe(undefined);
+    });
+  });
 });
