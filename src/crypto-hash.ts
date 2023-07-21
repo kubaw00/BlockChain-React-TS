@@ -1,13 +1,13 @@
 import crypto from 'crypto';
 
-type CryptoInput =
-  | [string[], number, string]
-  | [number, string, string[]]
-  | [number, string[], string]
-  | [string[], string, number]
-  | [string | number | string[]]
-  | [string | string[] | string]
-  | string[];
+type CryptoInput = any[];
+// | [string[], number, string]
+// | [number, string, string[]]
+// | [number, string[], string]
+// | [string[], string, number]
+// | [string | number | string[]]
+// | [string | string[] | string]
+// | string[];
 
 export const cryptoHash = (...inputs: CryptoInput) => {
   const hash = crypto

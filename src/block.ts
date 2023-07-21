@@ -3,14 +3,14 @@ import { cryptoHash } from './crypto-hash';
 
 export interface BlockData {
   timestamp: number;
-  data: string[];
+  data: string[] | string;
   hash: string;
   lastHash: string;
 }
 
 export class Block {
   timestamp: number;
-  data: string[];
+  data: string[] | string;
   hash: string;
   lastHash: string;
 
@@ -23,7 +23,7 @@ export class Block {
   static genesis(): BlockData {
     return new this(GENESIS_DATA);
   }
-  static mine(data: string[], lastBlock: BlockData) {
+  static mine(data: string[] | string, lastBlock: BlockData) {
     const timestamp = Date.now();
     const lastHash = lastBlock.hash;
 
