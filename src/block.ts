@@ -1,14 +1,15 @@
 import { GENESIS_DATA } from './config';
+import { cryptoHash } from './crypto-hash';
 
 export interface BlockData {
-  timestamp: string | Date;
+  timestamp: number;
   data: string[];
   hash: string;
   lastHash: string;
 }
 
 export class Block {
-  timestamp: string | Date;
+  timestamp: number;
   data: string[];
   hash: string;
   lastHash: string;
@@ -23,11 +24,14 @@ export class Block {
     return new this(GENESIS_DATA);
   }
   static mine(data: string[], lastBlock: BlockData) {
+    const timestamp = Date.now();
+    const lastHash = lastBlock.hash;
+
     return new this({
       data,
       lastHash: lastBlock.hash,
-      timestamp: new Date(),
-      hash: 'dfd',
+      timestamp,
+      hash: cryptoHash(data, timestamp, lastHash),
     });
   }
 }

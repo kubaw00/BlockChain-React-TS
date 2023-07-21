@@ -1,8 +1,9 @@
 import { Block } from './block';
 import { GENESIS_DATA } from './config';
+import { cryptoHash } from './crypto-hash';
 
 describe('Block', () => {
-  const timestamp = 'a-date';
+  const timestamp = 234234234234;
   const lastHash = 'last-hash';
   const hash = 'bar-hash';
   const data = ['data'];
@@ -29,7 +30,9 @@ describe('Block', () => {
     const lastBlock = Block.genesis();
     const data = ['piece of data'];
     const lastHash = lastBlock.hash;
+
     const mineBlock = Block.mine(data, lastBlock);
+    const timestamp = mineBlock.timestamp;
     test('lastHash of mineBlock equals hash genesis', () => {
       expect(mineBlock.lastHash).toEqual(lastHash);
     });
@@ -41,6 +44,9 @@ describe('Block', () => {
     });
     test('timestamp is not undefined', () => {
       expect(mineBlock.timestamp).not.toBe(undefined);
+    });
+    test('mine block has sha-256 hash', () => {
+      expect(mineBlock.hash).toEqual(cryptoHash(data, timestamp, lastHash));
     });
   });
 });
