@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { cryptoHash } from './crypto-hash';
 
 describe('cryptoHash()', () => {

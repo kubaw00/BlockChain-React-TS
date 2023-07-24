@@ -29,7 +29,7 @@ export class Block {
 
     return new this({
       data,
-      lastHash: lastBlock.hash,
+      lastHash,
       timestamp,
       hash: cryptoHash(data, timestamp, lastHash),
     });

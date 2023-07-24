@@ -1,6 +1,6 @@
 import crypto from 'crypto';
 
-type CryptoInput = any[];
+type CryptoInput = [string[] | string, number, string];
 // | [string[], number, string]
 // | [number, string, string[]]
 // | [number, string[], string]

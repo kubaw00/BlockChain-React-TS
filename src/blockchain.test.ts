@@ -29,9 +29,9 @@ describe('Blockchain', () => {
     });
     describe('when the chaind starts with the gensis block and has multiple blocks', () => {
       beforeEach(() => {
-        blockchain.addBlock({ data: 'Bears' });
-        blockchain.addBlock({ data: 'Dogs' });
-        blockchain.addBlock({ data: 'Cats' });
+        blockchain.addBlock('Bears');
+        blockchain.addBlock('Dogs');
+        blockchain.addBlock('Cats');
       });
       describe('and a last hash reference has changed', () => {
         test('return false', () => {
